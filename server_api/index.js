@@ -22,9 +22,9 @@ router.get('/url-1', function(req, res, next) {
   const showError = false;
 
   if (showError) {
-    res.status(404).json({
+    res.status(500).json({
       code: 1,
-      text: `Ошибка`,
+      text: `Ошибка бекенда`,
     });
     return null;
   }
