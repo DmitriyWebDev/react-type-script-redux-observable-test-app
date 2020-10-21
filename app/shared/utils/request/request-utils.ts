@@ -37,7 +37,7 @@ export function request<T>(
     transformResponse: (r: AxiosResponse<T>): T => (r && r.data ? r.data : ((r as unknown) as T)),
   };
 
-  return new Promise<T>(async (resolve, reject) => {
+  return new Promise<T>((resolve, reject) => {
     return axiosInstance
       .request<T, AxiosResponse<T>>(requestConfig)
       .then(({ data }: AxiosResponse<T>) => resolve(data))
@@ -49,7 +49,7 @@ export function request<T>(
           }>,
         ) => {
           const apiError: ApiError = {
-            httpStatusCode: error.response?.status as number,
+            httpStatusCode: error.response?.status || -1,
           };
 
           reject(apiError);
