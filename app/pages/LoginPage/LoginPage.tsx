@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
+import { RootStoreData } from '../../shared/types/redux-types';
+import { RouteChildrenProps } from 'react-router-dom';
 
-type Props = any;
+type Props = PropsFromRedux;
 
 export class LoginPage extends React.Component<Props> {
   render() {
@@ -13,8 +15,10 @@ export class LoginPage extends React.Component<Props> {
   }
 }
 
-const mapState = (state: any) => {
-  return {};
+const mapState = (state: RootStoreData, ownProps: RouteChildrenProps) => {
+  return {
+    ...ownProps,
+  };
 };
 
 const mapDispatch = {};
